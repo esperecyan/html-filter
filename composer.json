@@ -1,7 +1,6 @@
 {
 	"name": "esperecyan/html-filter",
 	"description": "ホワイトリストによる要素名と属性名のチェックを行うシンプルなHTMLフィルターです。",
-	"type": "project",
 	"homepage": "https://github.com/esperecyan/html-filter",
 	"license": "MPL-2.0",
 	"authors": [
