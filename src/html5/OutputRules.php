@@ -1,13 +1,13 @@
 <?php
 namespace esperecyan\html_filter\html5;
 
-use Masterminds\HTML5\{Serializer\OutputRules, Elements};
+use Masterminds\HTML5\{Serializer, Elements};
 
 /**
  * XHTML5としても妥当な出力を行うように拡張。
  * @internal
  */
-class OutputRules extends OutputRules
+class OutputRules extends Serializer\OutputRules
 {
     /**
      * @inheritDoc
