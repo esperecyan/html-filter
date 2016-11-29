@@ -116,6 +116,17 @@ Composer のインストール方法については、[Composer のグローバ�
 [文字大小区別]: http://www.hcn.zaq.ne.jp/___/WEB/DOM4-ja.html#case-sensitive
 [コールバック関数]: http://jp2.php.net/manual/language.types.callable
 
+### オプション
+[esperecyan\\html_filter\\Filterコンストラクタ]の第2引数に連想配列で与えます。
+各オプションにnullを与えた場合、指定は無視されます。
+
+| キー   | 値 |
+|--------|----|
+| before | フィルタリング処理前 (HTMLの構文解析後) の文書木に対して処理を行う[コールバック関数]を指定します。第1引数でbody要素の[DOMElement]を受け取ります。この関数が `false` (同じ型) を返した場合、そこで処理を停止し、[filterメソッド]はから文字列を返します。 |
+| after  | フィルタリング処理後 (HTMLの直列化前) の文書木に対して処理を行う[コールバック関数]を指定します。他は before と同じです。 |
+
+[DOMElement]: https://secure.php.net/manual/class.domelement.php
+
 ### ロギング
 [esperecyan\\html_filter\\Filter]は[PSR-3: Logger Interface]の[Psr\Log\LoggerAwareInterface]を実装しています。
 
@@ -168,7 +179,7 @@ $storage = $logged ? $output : $input;
 </html>
 ```
 
-[esperecyan\\html_filter\\Filter->filter()]: ./src/Filter.php#L292-337
+[esperecyan\\html_filter\\Filter->filter()]: ./src/Filter.php#L304-359
 
 Contribution
 --------------------------------------------------------------------------------

@@ -25,6 +25,11 @@ class Filter implements LoggerAwareInterface
     protected $whitelist;
     
     /**
+     * @var (callable|null)[]
+     */
+    protected $options;
+    
+    /**
      * Sets a logger instance on the object.
      * @see http://www.php-fig.org/psr/psr-3/#1-4-helper-classes-and-interfaces PSR-3: Logger Interface - PHP-FIG
      * @param LoggerInterface $logger
@@ -37,12 +42,19 @@ class Filter implements LoggerAwareInterface
     
     /**
      * @param (string|(string|callable|string[])[])[] $whitelist
-     * @throws \InvalidArgumentException $whitelistに含まれる値の型が指定に合致しない場合。
+     * @param (callable|null)[] $options
+     * @throws \InvalidArgumentException 引数の配列に含まれる値の型が指定に合致しない場合。
      * @throws \DomainException $whitelistにbody要素の子孫となりえない要素名が含まれる場合、または妥当でない正規表現パターンが含まれる場合。
      */
-    public function __construct(array $whitelist = null)
+    public function __construct(array $whitelist = null, array $options = [])
     {
         $this->logger = new NullLogger();
+        
+        if (isset($options['before']) && !is_callable($options['before'])
+            || isset($options['after']) && !is_callable($options['after'])) {
+            throw new \InvalidArgumentException();
+        }
+        $this->options = $options;
         
         if (is_null($whitelist)) {
             $this->whitelist = null;
@@ -302,6 +314,11 @@ class Filter implements LoggerAwareInterface
             return '';
         }
         
+        // beforeコールバック関数の実行
+        if (isset($this->options['before']) && call_user_func($this->options['before'], $body) === false) {
+            return '';
+        }
+        
         // 全ノードの走査
         $parent = $body;
         $previous = null;
@@ -326,6 +343,11 @@ class Filter implements LoggerAwareInterface
             $previous = $parent;
             $current = $parent->nextSibling;
             $parent = $parent->parentNode;
+        }
+        
+        // afterコールバック関数の実行
+        if (isset($this->options['after']) && call_user_func($this->options['after'], $body) === false) {
+            return '';
         }
         
         // 直列化
