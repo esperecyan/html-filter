@@ -2,6 +2,7 @@
 namespace esperecyan\html_filter;
 
 use Psr\Log\{LogLevel, LoggerInterface, LoggerAwareInterface, NullLogger};
+use Masterminds\HTML5\Elements;
 
 /**
  * @see https://github.com/esperecyan/html-filter#使い方
@@ -48,6 +49,8 @@ class Filter implements LoggerAwareInterface
      */
     public function __construct(array $whitelist = null, array $options = [])
     {
+        $this->fixElementKinds();
+        
         $this->logger = new NullLogger();
         
         if (isset($options['before']) && !is_callable($options['before'])
@@ -128,6 +131,16 @@ class Filter implements LoggerAwareInterface
             }
             unset($this->whitelist['*']);
         }
+    }
+    
+    /**
+     * masterminds/html5 における要素の種類を修正します。
+     * @see https://github.com/Masterminds/html5-php/issues/121
+     */
+    protected function fixElementKinds()
+    {
+        Elements::$html5['audio'] &= ~ Elements::BLOCK_TAG;
+        Elements::$html5['video'] &= ~ Elements::BLOCK_TAG;
     }
     
     /**

@@ -390,6 +390,12 @@ EOD
                     },
                 ],
             ],
+            [
+                null,
+                '<p><audio src="audio.m4a"></audio><video src="video.mp4"></video></p>',
+                '<p><audio src="audio.m4a"></audio><video src="video.mp4"></video></p>',
+                [],
+            ],
         ];
     }
     
