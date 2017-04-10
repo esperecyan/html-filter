@@ -5,7 +5,7 @@ use esperecyan\webidl\TypeError;
 use esperecyan\url\URL;
 use Psr\Log\LogLevel;
 
-class FilterTest extends \PHPUnit_Framework_TestCase implements \Psr\Log\LoggerInterface
+class FilterTest extends \PHPUnit\Framework\TestCase implements \Psr\Log\LoggerInterface
 {
     use \Psr\Log\LoggerTrait;
     
