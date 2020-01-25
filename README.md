@@ -191,7 +191,6 @@ Pull Request、または Issue よりお願いいたします。
 パブリックAPIは、[esperecyan\\html_filter\\Filterクラス]のpublicメソッドのみです。
 
 [セマンティック バージョニング]: http://semver.org/lang/ja/
-[当ライブラリのドキュメント]: https://esperecyan.github.io/html-filter
 [esperecyan\\html_filter\\Filterクラス]: ./src/Filter.php
 
 ライセンス
