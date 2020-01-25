@@ -15,14 +15,7 @@
 	},
 	"require": {
 		"php": ">=7.0",
-		"ext-bcmath": "*",
-		"ext-ctype": "*",
 		"ext-gettext": "*",
-		"ext-imagick": "*",
-		"ext-intl": "*",
-		"ext-mbstring": "*",
-		"ext-SPL": "*",
-		"ext-zip": "*",
 		"esperecyan/url": "^5.0.0",
 		"masterminds/html5": "^2.2.0",
 		"psr/log": "^1.0.0"
