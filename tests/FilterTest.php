@@ -413,11 +413,11 @@ EOD
     /**
      * @param array $whitelist
      * @param array $options
-     * @expectedException \InvalidArgumentException
      * @dataProvider invalidArgumentsProvider
      */
     public function testInvalidArgumentException(array $whitelist, array $options = [])
     {
+        $this->expectException(\InvalidArgumentException::class);
         new Filter($whitelist, $options);
     }
     
@@ -436,11 +436,11 @@ EOD
     
     /**
      * @param array $whitelist
-     * @expectedException \DomainException
      * @dataProvider invalidDomainsProvider
      */
     public function testDomainException(array $whitelist)
     {
+        $this->expectException(\DomainException::class);
         new Filter($whitelist);
     }
     
