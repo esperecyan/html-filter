@@ -15,7 +15,6 @@
 	},
 	"require": {
 		"php": ">=7.0",
-		"ext-gettext": "*",
 		"esperecyan/url": "^5.0.0",
 		"masterminds/html5": "^2.2.0",
 		"psr/log": "^1.0.0"
@@ -26,7 +25,10 @@
 	"autoload": {
 		"psr-4": {
 			"esperecyan\\html_filter\\": "src/"
-		}
+		},
+		"files": [
+			"src/bootstrap.php"
+		]
 	},
 	"autoload-dev": {
 		"psr-4": {

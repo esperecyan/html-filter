@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b17effa021e99043d5b477f3975ddc6c",
+    "content-hash": "94563c59b74de2c40c34aabf98cb08d1",
     "packages": [
         {
             "name": "esperecyan/url",
@@ -2045,8 +2045,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0",
-        "ext-gettext": "*"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }
