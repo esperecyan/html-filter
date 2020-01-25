@@ -139,7 +139,6 @@ class Filter implements LoggerAwareInterface
      */
     protected function fixElementKinds()
     {
-        Elements::$html5['audio'] &= ~ Elements::BLOCK_TAG;
         Elements::$html5['video'] &= ~ Elements::BLOCK_TAG;
     }
     
